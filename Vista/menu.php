@@ -27,7 +27,7 @@ if (empty($_SESSION['id'])) {
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+  <link href="../CSS/menu.css" rel="stylesheet">
 </head>
 <?php
 date_default_timezone_set('America/Lima');
@@ -66,11 +66,63 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
 ?>
 
 <body>
-  <div class="justify-content-between d-flex p-2  ">
-    <h3>Sistemas de Registro de Visitas</h3>
+  <div class="justify-content-between d-flex ">
+
+    <div id="wrapper">
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav" style="margin-left:5px;">
+          <h4 class="text-white text-center">Registro de Visitas</h4>
+          <li class="sidebar-brand">
+            <a id="menu-toggle" style="margin-top:20px;float:right;" title="Ocultar Menu"> <i class="fa fa-bars"></i>
+          </li>
+          <li>
+            <a href="inicio.php"><i class="fa-sharp-duotone fa-solid fa-house" aria-hidden="true"> </i> <span
+                style="margin-left:10px;">Inicio</span> </a>
+          </li>
+          <li>
+            <a href="registrar.php"> <i class="fa-solid fa-user-plus" aria-hidden="true"></i> <span
+                style="margin-left:10px;">
+                Registrar</span> </a>
+          </li>
+          <li>
+            <a href="reportes.php"> <i class="fa-solid fa-file-lines" aria-hidden="true"></i> <span
+                style="margin-left:10px;">
+                Reportes</span> </a>
+          </li>
+
+
+          <div style="margin-top: 560px;">
+            <li>
+              <?php if ($_SESSION['nivel'] == '1') { ?>
+                <a href="area.php"><i class="fa-duotone fa-solid fa-address-card"></i><span style="margin-left:10px;">
+                    Registrar Area</span></a>
+              <?php } ?>
+            </li>
+
+            <!--<li>
+            <a href="#"> <i class="fa fa-font" aria-hidden="true"> </i> <span style="margin-left:10px;"> Section</span>
+            </a>
+            </li>
+            <li>
+            <a href="#"><i class="fa fa-info-circle " aria-hidden="true"> </i> <span style="margin-left:10px;">Section
+            </span> </a>
+            </li>
+            <li>
+            <a href="#"> <i class="fa fa-comment-o" aria-hidden="true"> </i> <span style="margin-left:10px;">
+              Section</span> </a>
+            </li>-->
+            <li style="margin-left:40px;">
+              <a type="button" class="btn btn-danger" href="../Controlador/C_cerrar_session.php"></i><span
+                  class="text-white">Salir</span></a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
     <b>
-      <div class="d-flex justify-content-between" style="width: 350px;">
-        <div><input class="border border-0 fw-bold bg-transparent" style="width: 257px;" value="<?php echo $fecha ?>"
+      <div class="d-flex justify-content-between p-2" style="width: 400px;">
+        <div><input class="border border-0 fw-bold bg-transparent" style="width: 260px;" value="<?php echo $fecha ?>"
             disabled></input>
         </div>
         <div>
@@ -80,10 +132,21 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
         </div>
       </div>
     </b>
-    <a type="button" class="btn btn-danger" href="../Controlador/C_cerrar_session.php">Salir</a>
+    <div class="p-2">
+      <div><a type="button" class="btn btn-danger" href="../Controlador/C_cerrar_session.php">Salir</a></div>
+      <div style="margin-top: 10px;">
+        <?php echo "<strong>" . $_SESSION['nombre'] . " " . $_SESSION['apellidos'] . "</strong>"; ?></div>
+    </div>
+    <!--<div class="p-2">
+  
+    </div>-->
   </div>
 
-  <nav class="navbar bg-territary border-bottom border-body navbar-expand-lg">
+
+
+
+
+  <!-- <nav class="navbar bg-territary border-bottom border-body navbar-expand-lg">
     <div class="container-fluid">
       <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
         <ul class="nav nav-underline">
@@ -97,18 +160,23 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
             <a class="nav-link " href="reportes.php">Reportes</a>
           </li>
         </ul>
-        <?php if ($_SESSION['nivel'] == '1') { ?>
+        <?php //if ($_SESSION['nivel'] == '1') { ?>
           <button type="button" class="btn btn-warning"><a href="area.php"
               class="link-offset-2 link-underline link-underline-opacity-0 text-dark">Registrar Area</a></button>
-        <?php } ?>
-        <?php echo "<strong>" . $_SESSION['nombre'] . " " . $_SESSION['apellidos'] . "</strong>"; ?>
+        <?php //} ?>
+        <?php //echo "<strong>" . $_SESSION['nombre'] . " " . $_SESSION['apellidos'] . "</strong>"; ?>
       </div>
     </div>
-  </nav>
+  </nav>-->
 
 
 </body>
-
+<script>
+  $("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+</script>
 <script src="https://cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.1.1/js/dataTables.buttons.js"> </script>

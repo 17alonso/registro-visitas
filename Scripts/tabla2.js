@@ -42,7 +42,7 @@ var tabla = new DataTable('#mitabla', {
                     titleAttr: 'Exportar a Excel',
                     className: 'btn btn-success',
                     exportOptions: {
-                        columns: [1,3,4,5,6,7,8,9],
+                        columns: [1, 3, 4, 5, 6, 7, 8, 9],
                     }
                 },
                 {
@@ -51,8 +51,9 @@ var tabla = new DataTable('#mitabla', {
                     titleAttr: 'Exportar a PDF',
                     className: 'btn btn-danger',
                     exportOptions: {
-                        columns: [1,3,4,5,6,7,8,9]
-                    }
+                        columns: [1, 3, 4, 5, 6, 7, 8, 9]
+                    },
+                    orientation: 'landscape',
                 },
             ]
         }

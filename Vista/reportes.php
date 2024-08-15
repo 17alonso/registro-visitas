@@ -36,7 +36,7 @@ if (empty($_SESSION['id'])) {
             ?>
         </div>
         <!--Fin mensaje Toast Sweet alert-->
-        <div class="mx-auto" style="width: 80%">
+        <div style="margin-left:250px;margin-right:50px;">
             <div class="mx-auto" style="width: 75%">
                 <form action="" method="GET">
                     <div class="row">

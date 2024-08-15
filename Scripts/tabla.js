@@ -1,4 +1,5 @@
 // tabla inicio
+var date = new Date()
 var tabla = new DataTable('#mitabla', {
     columns: [
         { orderSequence: []},
@@ -39,26 +40,27 @@ var tabla = new DataTable('#mitabla', {
         topStart: {
             buttons: [
                 {
-                    extend: 'excelHtml5',
+                    extend: 'excel',
                     text: '<i class="fas fa-file-excel"></i> ',
                     titleAttr: 'Exportar a Excel',
                     className: 'btn btn-success',
                     exportOptions: {
                         columns: [1,3,4,5,6,7,8,9],
-                        orthogonal: "myExport",
-                    }
-                    
+                    },
+                    title:"Visitas del "+date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear()
                 },
                 {
-                    extend: 'pdfHtml5',
+                    extend: 'pdf',
                     text: '<i class="fas fa-file-pdf"></i> ',
                     titleAttr: 'Exportar a PDF',
                     className: 'btn btn-danger',
                     exportOptions: {
                         columns: [1,3,4,5,6,7,8,9]
-                    }
+                    },
+                    orientation: 'landscape',
+                    title:"Visitas del "+date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear()
                 },
             ]
         }
-    },
+    }
 });
