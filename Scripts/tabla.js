@@ -58,7 +58,7 @@ var tabla = new DataTable('#mitabla', {
                         columns: [1,3,4,5,6,7,8,9]
                     },
                     orientation: 'landscape',
-                    title:"Visitas del "+date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear()
+                    title:"Registro Visitas de la fecha "+date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear()
                 },
             ]
         }

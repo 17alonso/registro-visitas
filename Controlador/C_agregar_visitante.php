@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require_once '../Modelo/M_visitante.php';
 
 date_default_timezone_set('America/Lima');
@@ -32,7 +32,8 @@ if (!empty("btn_guardar") and !empty($_POST["dni_visitante"]) and !empty($_POST[
       title: "Exito: Visitante registrado"
     });
     </script>';
-  header("location:/registro_visitas/Vista/impresion.php?num=$num&nombre=$nombre $apellido&area=$area&jefe=$jefe&hora=$hora&fecha=$fecha");
+  //header("location:/registro_visitas/Vista/impresion.php?num=$num&nombre=$nombre $apellido&area=$area&jefe=$jefe&hora=$hora&fecha=$fecha");
+  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/impresion.php?num=$num&nombre=$nombre $apellido&area=$area&jefe=$jefe&hora=$hora&fecha=$fecha'>";
 } else {
   $_SESSION['sms_registro'] = '<script>
   const Toast = Swal.mixin({
@@ -47,6 +48,7 @@ if (!empty("btn_guardar") and !empty($_POST["dni_visitante"]) and !empty($_POST[
     title: "Error: No se pudo registrar al visitante"
   });
   </script>';
-  header("location:/registro_visitas/Vista/registrar.php");
+  //header("location:/registro_visitas/Vista/registrar.php");
+  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/Vista/registrar.php'>";
 }
 

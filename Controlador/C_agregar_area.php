@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start()
 require_once '../Modelo/M_area.php';
 date_default_timezone_set('America/Lima');
 if (!empty("btn_guardar") and !empty($_POST["jefe_area"]) and !empty($_POST["nombre_area"])) {
@@ -22,7 +22,8 @@ if (!empty("btn_guardar") and !empty($_POST["jefe_area"]) and !empty($_POST["nom
       title: "Exito: Area registrada"
     });
     </script>';
-    header("location:/registro_visitas/Vista/inicio.php");
+    //header("location:/registro_visitas/Vista/inicio.php");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";
 }else{
   $_SESSION['sms_registro'] = '<script>
   const Toast = Swal.mixin({
@@ -37,6 +38,7 @@ if (!empty("btn_guardar") and !empty($_POST["jefe_area"]) and !empty($_POST["nom
     title: "Error: No se pudo registrar el Area"
   });
   </script>';
-  header("location:/registro_visitas/Vista/registrar.php");
+  //header("location:/registro_visitas/Vista/registrar.php");
+  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/registrar.php'>";
 }
 

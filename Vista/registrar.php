@@ -1,7 +1,8 @@
 <?php
 include "../Vista/menu.php";
 if (empty($_SESSION['id'])) {
-    header("location:/registro_visitas");
+    //header("location:/registro_visitas");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
 }
 ?>
 <html>
@@ -95,8 +96,8 @@ if (empty($_SESSION['id'])) {
                 </div>
             </div>
             <div class="d-grid gap-2 mx-auto p-2" style="width:21%">
-                <textarea type="text" class="form-control" style="height: 140; resize:none" name="detalle_visitante"
-                    id="detalle_visitante" placeholder="Detalle su Visita" required minlength="20"></textarea>
+                <textarea type="text" class="form-control" style="height: 150; resize:none" name="detalle_visitante"
+                    id="detalle_visitante" placeholder="Detalle su Visita" required minlength="20" wrap="hard" ></textarea>
             </div>
     </form>
     <div class="d-grid gap-2 col-2 mx-auto">

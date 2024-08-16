@@ -1,8 +1,9 @@
 <?php
-include "../Vista/menu.php";
+include "menu.php";
 require_once '../Modelo/M_visitante.php';
 if (empty($_SESSION['id'])) {
-    header("location:/registro_visitas");
+    //header("location:/registro_visitas");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
 }
 ?>
 <html>
@@ -37,7 +38,6 @@ if (empty($_SESSION['id'])) {
         </div>
         <!--Fin mensaje Toast Sweet alert-->
         <div style="margin-left:250px;margin-right:50px;">
-            <div class="mx-auto" style="width: 75%">
                 <form action="" method="GET">
                     <div class="row">
                         <div class="col-md-2">
@@ -63,8 +63,6 @@ if (empty($_SESSION['id'])) {
                     </div>
                     <br>
                 </form>
-            </div>
-            <div class="mx-auto" style="width: fit-content">
                 <table class="table table-striped table-hover table-sm" id="mitabla">
                     <thead class="table-dark">
                         <tr>
@@ -132,7 +130,7 @@ if (empty($_SESSION['id'])) {
                                     <center><?php echo $datos->jefe; ?></center>
                                 </td>
                                 <td style="width: fit-content">
-                                    <center><?php echo $datos->detalle; ?></center>
+                                    <center><?php echo nl2br($datos->detalle); ?></center>
                                 </td>
                                 <td style="width: fit-content">
                                     <center><?php echo $datos->fecha; ?></center>
@@ -156,7 +154,6 @@ if (empty($_SESSION['id'])) {
                         } ?>
                     </tbody>
                 </table>
-            </div>
         </div>
     </body>
     <script src="../Scripts/tabla2.js"></script>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require_once '../Modelo/M_visitante.php';
 
 $id_estado = $_GET['id'];
@@ -20,5 +20,6 @@ Toast.fire({
 });
 </script>';
 
-header("location:/registro_visitas/Vista/inicio.php");
+//header("location:/registro_visitas/Vista/inicio.php");
+echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";
 

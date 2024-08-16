@@ -2,7 +2,8 @@
 include "../Vista/menu.php";
 require_once '../Modelo/M_visitante.php';
 if (empty($_SESSION['id'])) {
-    header("location:/registro_visitas");
+    //header("location:/registro_visitas");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
 }
 ?>
 <html>
@@ -36,110 +37,106 @@ if (empty($_SESSION['id'])) {
     </div>
     <!--Fin mensaje Toast Sweet alert-->
 
-    <div class="mx-auto" style="width: 80%">
-        <div class="mx-auto" style="width: fit-content">
-            <table class="table table-striped table-hover table-sm" id="mitabla">
-                <thead class="table-dark">
+    <div  style="margin-left:250px;margin-right:50px;">
+        <table class="table table-striped table-hover table-sm" id="mitabla">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" style="width: fit-content;">
+                        <center>ID</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>N°</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>DNI</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>NOMBRE</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>APELLIDOS</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>AREA</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>JEFE</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>DETALLE</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>FECHA</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>HORA</center>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $consulta = new M_visitante();
+                $resultado = $consulta->traer_visitante();
+                $num = 1;
+                while ($datos = $resultado->fetch_object()) { ?>
                     <tr>
-                        <th scope="col" style="width: fit-content;">
-                            <center>ID</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>N°</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>DNI</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>NOMBRE</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>APELLIDOS</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>AREA</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>JEFE</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>DETALLE</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>FECHA</center>
-                        </th>
-                        <th scope="col" style="width: fit-content">
-                            <center>HORA</center>
-                        </th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $consulta = new M_visitante();
-                    $resultado = $consulta->traer_visitante();
-                    $num = 1;
-                    while ($datos = $resultado->fetch_object()) { ?>
-                        <tr>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->id ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $num; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->dni; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->nombre; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->apellido; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->area; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->jefe; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->detalle; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->fecha; ?></center>
-                            </td>
-                            <td style="width: fit-content">
-                                <center><?php echo $datos->hora; ?></center>
-                            </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->id ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $num; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->dni; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->nombre; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->apellido; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->area; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->jefe; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo nl2br($datos->detalle); ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->fecha; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->hora; ?></center>
+                        </td>
+                        <td style="width: fit-content;">
+                            <center> <a href="editar.php?id=<?php echo $datos->id ?>" class="btn btn-small btn-warning"
+                                    title="Editar"><i class="fa-regular fa-pen-to-square"></i></a>
+                            </center>
+                        </td>
+                        <?php if ($_SESSION['nivel'] == '1') { ?>
                             <td style="width: fit-content;">
-                                <center> <a href="editar.php?id=<?php echo $datos->id ?>" class="btn btn-small btn-warning"
-                                        title="Editar"><i class="fa-regular fa-pen-to-square"></i></a>
+                                <center><a onclick="return confirmar()"
+                                        href="../Controlador/C_eliminar_visitante.php?id=<?php echo $datos->id ?>"
+                                        class="btn btn-small btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></a>
                                 </center>
                             </td>
-                            <?php if ($_SESSION['nivel'] == '1') { ?>
-                                <td style="width: fit-content;">
-                                    <center><a onclick="return confirmar()"
-                                            href="../Controlador/C_eliminar_visitante.php?id=<?php echo $datos->id ?>"
-                                            class="btn btn-small btn-danger" title="Eliminar"><i
-                                                class="fa-solid fa-trash"></i></a>
-                                    </center>
-                                </td>
-                            <?php } else { ?>
-                                <td style="width: fit-content;">
-                                    <center><a
-                                            href="impresion.php?num=<?php echo $num ?>&nombre=<?php echo $datos->nombre." ".$datos->apellido;?>&area=<?php echo $datos->area;?>&fecha=<?php echo $datos->fecha;?>&hora=<?php echo $datos->hora;?>"
-                                            class="btn btn-small btn-info" title="Imprimir"><i
-                                                class="fa-solid fa-print"></i></a>
-                                    </center>
-                                </td>
-                            <?php } ?>
-                        </tr>
-                        <?php $num = $num + 1;
-                    } ?>
-                </tbody>
-            </table>
-        </div>
+                        <?php } else { ?>
+                            <td style="width: fit-content;">
+                                <center><a
+                                        href="impresion.php?num=<?php echo $num ?>&nombre=<?php echo $datos->nombre . " " . $datos->apellido; ?>&area=<?php echo $datos->area; ?>&fecha=<?php echo $datos->fecha; ?>&hora=<?php echo $datos->hora; ?>"
+                                        class="btn btn-small btn-info" title="Imprimir"><i class="fa-solid fa-print"></i></a>
+                                </center>
+                            </td>
+                        <?php } ?>
+                    </tr>
+                    <?php $num = $num + 1;
+                } ?>
+            </tbody>
+        </table>
     </div>
 </body>
 

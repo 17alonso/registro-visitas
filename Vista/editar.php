@@ -1,8 +1,9 @@
 <?php
-include "../Vista/menu.php";
+include "menu.php";
 require_once '../Modelo/M_visitante.php';
 if (empty($_SESSION['id'])) {
-    header("location:/registro_visitas");
+    //header("location:/registro_visitas");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
 }
 ?>
 <html>

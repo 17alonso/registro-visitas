@@ -83,4 +83,5 @@ la conexión con la impresora. Recuerda incluir esto al final de todos los archi
  */
 $printer->close();
 
-header("location:/registro_visitas/Vista/inicio.php");
+//header("location:/registro_visitas/Vista/inicio.php");
+echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";	

@@ -1,7 +1,8 @@
 <?php
 include "../Vista/menu.php";
 if (empty($_SESSION['id'])) {
-    header("location:/registro_visitas");
+    //header("location:/registro_visitas");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
 }
 ?>
 <html>

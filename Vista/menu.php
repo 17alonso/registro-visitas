@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (empty($_SESSION['id'])) {
-  header("location:/registro_visitas");
+  //header("location:/registro_visitas");
+  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
 }
 ?>
 <html>
@@ -71,7 +72,7 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
     <div id="wrapper">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav" style="margin-left:5px;">
-          <h4 class="text-white text-center">Registro de Visitas</h4>
+          <h4 class="text-white text-center p-2">Registro de Visitas</h4>
           <li class="sidebar-brand">
             <a id="menu-toggle" style="margin-top:20px;float:right;" title="Ocultar Menu"> <i class="fa fa-bars"></i>
           </li>
@@ -127,7 +128,7 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
         </div>
         <div>
           <label class="fw-blod opacity-75" id="hora_visitante" name="hora_visitante">
-            <script src="../scripts/tiemporeal.js"></script>
+            <script src="../Scripts/tiemporeal.js"></script>
           </label>
         </div>
       </div>

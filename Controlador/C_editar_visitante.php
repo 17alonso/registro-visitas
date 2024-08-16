@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require_once '../Modelo/M_visitante.php';
 
 date_default_timezone_set('America/Lima');
@@ -24,7 +24,8 @@ if (!empty("btn_guardar") and !empty($_POST["detalle_visitante"]) ){
       title: "Exito: Se guardo correctamente la edicion"
     });
     </script>';
-    header("location:/registro_visitas/Vista/inicio.php");
+    //header("location:/registro_visitas/Vista/inicio.php");
+    echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";
 }else{
   $_SESSION['sms_registro'] = '<script>
   const Toast = Swal.mixin({
@@ -39,6 +40,7 @@ if (!empty("btn_guardar") and !empty($_POST["detalle_visitante"]) ){
     title: "Error: No se guardo la edicion correctamente"
   });
   </script>';
-  header("location:/registro_visitas/Vista/editar.php");
+  //header("location:/registro_visitas/Vista/editar.php");
+  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=Vista/editar.php'>";
 }
 

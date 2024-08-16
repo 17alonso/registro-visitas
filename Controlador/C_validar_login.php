@@ -13,7 +13,8 @@ if (isset($_POST['btningresar'])) {
         $_SESSION['nombre'] = $datos->nombre;
         $_SESSION['apellidos'] = $datos->apellidos;
         $_SESSION['nivel'] = $datos->nivel;
-        header("location:/registro_visitas/Vista/inicio.php");
+        //header("location:/registro_visitas/Vista/inicio.php");
+        echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";
     } else {
         $_SESSION["sms_login"] = '<center><div class="alert alert-danger">Usuario o Contraseña vacio</div></center>';
     }
