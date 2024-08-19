@@ -59,7 +59,17 @@ button[type="submit"] {
     font-size: 1.2rem;
     cursor: pointer;
 }
-
+.botonenviar {
+    background-color: rgb(10, 106, 231);
+    padding: 8px 13px;
+    margin: 10px 0px;
+    margin-left:145px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 button[type="submit"]:hover {
     background-color: #57A639;
 }

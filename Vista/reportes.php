@@ -38,19 +38,20 @@ if (empty($_SESSION['id'])) {
         </div>
         <!--Fin mensaje Toast Sweet alert-->
         <div style="margin-left:250px;margin-right:50px;">
+        <center><h3>REPORTES</h3></center>
                 <form action="" method="GET">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 ">
                             <div class="form-group">
                                 <label><b>Del Dia</b></label>
-                                <input type="date" class="form-control fw-bold p-2 gap-2" style="width: fit-content"
+                                <input type="date" class="form-control fw-bold p-2 gap-2" 
                                     name="fecha_ini" id="fecha_ini" value="<?php echo $_GET["fecha_ini"] ?>" required>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label><b> Hasta el Dia</b></label>
-                                <input type="date" class="form-control fw-bold" style="width: fit-content"
+                                <input type="date" class="form-control fw-bold"
                                     name="fecha_fin" id="fecha_fin" value="<?php echo $_GET["fecha_fin"] ?>"required>
                             </div>
                         </div>
@@ -64,6 +65,7 @@ if (empty($_SESSION['id'])) {
                     <br>
                 </form>
                 <table class="table table-striped table-hover table-sm" id="mitabla">
+                
                     <thead class="table-dark">
                         <tr>
                             <th scope="col" style="width: fit-content;">

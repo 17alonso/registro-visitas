@@ -36,8 +36,9 @@ if (empty($_SESSION['id'])) {
         ?>
     </div>
     <!--Fin mensaje Toast Sweet alert-->
-
-    <div  style="margin-left:250px;margin-right:50px;">
+    
+    <div  style="margin-left:250px;margin-right:50px;" class="p-3">
+    <center><h3>INICIO</h3></center>
         <table class="table table-striped table-hover table-sm" id="mitabla">
             <thead class="table-dark">
                 <tr>

@@ -92,13 +92,16 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
           </li>
 
 
-          <div style="margin-top: 560px;">
+          <div>
             <li>
               <?php if ($_SESSION['nivel'] == '1') { ?>
                 <a href="area.php"><i class="fa-duotone fa-solid fa-address-card"></i><span style="margin-left:10px;">
                     Registrar Area</span></a>
+                    <a href="usuario.php"><i class="fa-solid fa-person-circle-plus"></i><span style="margin-left:10px;">
+                    Registrar Area</span></a>
               <?php } ?>
             </li>
+            
 
             <!--<li>
             <a href="#"> <i class="fa fa-font" aria-hidden="true"> </i> <span style="margin-left:10px;"> Section</span>
@@ -111,25 +114,25 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
             <li>
             <a href="#"> <i class="fa fa-comment-o" aria-hidden="true"> </i> <span style="margin-left:10px;">
               Section</span> </a>
-            </li>-->
+            </li>
             <li style="margin-left:40px;">
               <a type="button" class="btn btn-danger" href="../Controlador/C_cerrar_session.php"></i><span
                   class="text-white">Salir</span></a>
-            </li>
+            </li>-->
           </div>
         </ul>
       </div>
     </div>
 
     <b>
-      <div class="d-flex justify-content-between p-2" style="width: 400px;">
-        <div><input class="border border-0 fw-bold bg-transparent" style="width: 260px;" value="<?php echo $fecha ?>"
-            disabled></input>
+      <div class="d-flex justify-content-between p-2" style="width: 610px;">
+        <div><h3><input class="border border-0 fw-bold bg-transparent" style="width: 450px;" value="<?php echo $fecha ?>"
+            disabled></input></h3>
         </div>
         <div>
-          <label class="fw-blod opacity-75" id="hora_visitante" name="hora_visitante">
+          <h4><label class="fw-blod opacity-75" id="hora_visitante" name="hora_visitante">
             <script src="../Scripts/tiemporeal.js"></script>
-          </label>
+          </label></h4>
         </div>
       </div>
     </b>

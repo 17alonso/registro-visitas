@@ -83,7 +83,7 @@ $resultado = $nuevo->traer_visitante_editar($id_e);
                 <div class="d-grid gap-2 mx-auto p-2" style="width:21%">
                     <textarea type="text" class="form-control" style="height: 140; resize:none" name="detalle_visitante"
                         id="detalle_visitante" placeholder="Detalle su Visita"
-                        required><?php echo $datos_e->detalle; ?></textarea>
+                        required wrap="hard"><?php echo $datos_e->detalle; ?></textarea>
                 </div>
             <?php } ?>
             <div class="d-grid gap-2 col-1 mx-auto">

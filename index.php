@@ -34,7 +34,8 @@ require 'Controlador/C_validar_login.php';
         </div>
 
         </div>
-        <center><button type="submit" id="btningresar" name="btningresar">Entrar</button></center>-->
+        <center><button type="submit" id="btningresar" name="btningresar">Entrar</button></center>
+        </form> -->
     <section class="h-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -73,9 +74,11 @@ require 'Controlador/C_validar_login.php';
                                             <label for="contra">Contraseña</label>
                                             <i class="icono fa-solid fa-eye"> </i>
                                         </div>
-                                        <center><button type="submit" id="btningresar"
-                                                name="btningresar">Acceder</button></center>
+                                        <center>
+                                            <button type="submit" id="btningresar" name="btningresar">Acceder</button>
+                                        </center>
                                     </form>
+                                    <!--<center></center><a href="usuario.php"><button class="botonenviar" id="btningresar" name="btningresar">Registrar</button></a></center>-->
                                 </div>
                             </div>
                         </div>
@@ -85,7 +88,6 @@ require 'Controlador/C_validar_login.php';
         </div>
         </div>
     </section>
-    <!-- </form> -->
 </body>
 <script src="Scripts/sms.js"></script>
 <script src="Scripts/ver_contra.js"></script>

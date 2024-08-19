@@ -1,5 +1,6 @@
 $('#validar_dni').click(function () {
     dni = $('#dni_visitante').val();
+
     Swal.fire({
         title: "Buscando...",
         showConfirmButton: false,
@@ -14,28 +15,28 @@ $('#validar_dni').click(function () {
     });
     $.ajax({
         url: '../Controlador/buscar_dni.php',
-        type: 'post',
+        method: 'post',
         data: 'dni_visitante=' + $('#dni_visitante').val(),
         dataType: 'json',
         success: function (a) {
-            if (a.numeroDocumento == dni) {
+            if (a.dni == dni) {
 
                 nombreM = a.nombres.toLowerCase();
-                aPm = a.apellidoPaterno.toLowerCase();
-                aMm = a.apellidoMaterno.toLowerCase();
+                aPm = a.apellido_paterno.toLowerCase();
+                aMm = a.apellido_materno.toLowerCase();
 
-                nombreC= nombreM.split(' ').map(nombreM => {
+                nombreC = nombreM.split(' ').map(nombreM => {
                     return nombreM[0].toUpperCase() + nombreM.slice(1);
                 }).join(' ');
 
-                aPc= aPm.split(' ').map(aPm => {
+                aPc = aPm.split(' ').map(aPm => {
                     return aPm[0].toUpperCase() + aPm.slice(1);
                 }).join(' ');
 
-                aMc= aMm.split(' ').map(aMm => {
+                aMc = aMm.split(' ').map(aMm => {
                     return aMm[0].toUpperCase() + aMm.slice(1);
                 }).join(' ');
-                
+
                 $('#nombre_visitante').val(nombreC);
                 $('#apellido_paterno').val(aPc);
                 $('#apellido_materno').val(aMc);

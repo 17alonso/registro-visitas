@@ -46,6 +46,7 @@ if (empty($_SESSION['id'])) {
     <!--Fin mensaje Toast Sweet alert-->
     <form action="../Controlador/C_agregar_visitante.php" method="POST">
         <div>
+        <center><h3>REGISTRAR</h3></center>
             <div class="d-grid gap-2  mx-auto d-flex p-2" style="width:21%">
                 <input type="text" class="form-control " name="dni_visitante" id="dni_visitante" placeholder="DNI"
                     pattern="^[0-9]\d*$" maxlength="8" autofocus required

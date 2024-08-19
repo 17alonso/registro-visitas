@@ -79,7 +79,7 @@ body {
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: #721a1a;
+    background: none;
 }
 
 .sidebar-nav li a:active,
