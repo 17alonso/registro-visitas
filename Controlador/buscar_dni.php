@@ -24,7 +24,7 @@ if ($err) {
     echo "cURL Error #:" . $err;
 } else {
     echo $response;
-}*/
+}
 
 //*************************************************************
 
@@ -34,7 +34,8 @@ if ($err) {
 // 200 consultas de DNI
 //---------------------------------------
 // Datos
-/*$token = 'cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjZjMTA3Y2E5ZmE0MTczZjYxMzIwMmJj';
+
+$token = 'cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjZjMTA3Y2E5ZmE0MTczZjYxMzIwMmJj';
 $dni = $_REQUEST['dni_visitante'];
 // Iniciar llamada a API
 $curl = curl_init();
@@ -62,8 +63,8 @@ $response = curl_exec($curl);
 echo $response;
 //curl_close($curl);
 // Datos listos para usar
-//$persona = json_decode($response);*/
-
+//$persona = json_decode($response);
+*/
 
 //-----------------------------------------------------------------------
 // 100 consultas de DNI al dia

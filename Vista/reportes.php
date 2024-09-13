@@ -102,9 +102,9 @@ if (empty($_SESSION['id'])) {
                     </thead>
                     <tbody>
                         <?php
-                        error_reporting(0);
-                        $fecha_ini_1 = date("d-m-Y", strtotime($_GET["fecha_ini"]));
-                        $fecha_fin_1 = date("d-m-Y", strtotime($_GET["fecha_fin"]));
+                        error_reporting(E_ERROR | E_WARNING | E_PARSE);
+                        $fecha_ini_1 = date("Y-m-d", strtotime($_GET["fecha_ini"]));
+                        $fecha_fin_1 = date("Y-m-d", strtotime($_GET["fecha_fin"]));
                         $consulta = new M_visitante();
                         $resultado = $consulta->traer_visitante_reporte($fecha_ini_1, $fecha_fin_1);
                         $num = 1;

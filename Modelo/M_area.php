@@ -9,4 +9,10 @@ class M_area
         $resultado = $conn->Ejecutar_Consulta($query);
         return $resultado;
     }
+    function traer_area(){
+        $query="select * from area";
+        $conn = new conectar();
+        $resultado = $conn->Ejecutar_Consulta($query);
+        return $resultado;
+    }
 }

@@ -16,10 +16,12 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/pruebalogin.css">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <link rel="icon" href="Img/logo_muni.png">
 </head>
 <?php
 //header("location:/registro_visitas/Vista/menu.php");
-require 'Controlador/C_validar_login.php';
+//require 'Controlador/C_validar_login.php';
 ?>
 
 <body>
@@ -51,21 +53,22 @@ require 'Controlador/C_validar_login.php';
                                         <img src="Img/logo_muni.png" style="width: 200px;" alt="logo">
                                         <h4 class="mt-1 mb-5 pb-1">Registro de Visitas</h4>
                                     </div>
-                                    <form method="POST">
-                                        <div>
+
+                                        <?php
+                                        session_start();
+                                        if (!empty($_SESSION['sms_login'])) { ?>
+                                            <div>
+                                                <?php echo $_SESSION['sms_login']; ?>
+                                            </div>
                                             <?php
-                                            if (!empty($_SESSION['sms_login'])) { ?>
-                                                <div>
-                                                    <?php echo $_SESSION['sms_login']; ?>
-                                                </div>
-                                                <?php
-                                                unset($_SESSION['sms_login']);
-                                            }
-                                            ?>
-                                        </div>
+                                            unset($_SESSION['sms_login']);
+                                        }
+                                        ?>
+
+                                    <form action="Controlador/C_validar_login.php" method="POST">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="usuario" name="usuario"
-                                                placeholder="Usuario">
+                                                placeholder="Usuario" required>
                                             <label for="usuario">Usuario</label>
                                         </div>
                                         <div class="contenedor form-floating">

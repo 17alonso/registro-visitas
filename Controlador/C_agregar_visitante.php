@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require_once '../Modelo/M_visitante.php';
 
 date_default_timezone_set('America/Lima');
@@ -16,7 +16,7 @@ if (!empty("btn_guardar") and !empty($_POST["dni_visitante"]) and !empty($_POST[
   $_SESSION["sms_registro"] = "";
   $nuevo = new M_visitante();
   $nuevo->M_agregar_visitante($dni, $nombre, $apellido, $area, $jefe, $fecha, $hora, $detalle, $estado);
-  $resultado = $nuevo->contar_visitante($fecha);
+  $resultado = $nuevo->contar_visitante();
   $datos = $resultado->fetch_object();
   $num=$datos->total;
   $_SESSION['sms_registro'] = '<script>
@@ -49,6 +49,6 @@ if (!empty("btn_guardar") and !empty($_POST["dni_visitante"]) and !empty($_POST[
   });
   </script>';
   //header("location:/registro_visitas/Vista/registrar.php");
-  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/Vista/registrar.php'>";
+  echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/registrar.php'>";
 }
 

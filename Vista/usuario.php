@@ -1,5 +1,6 @@
 <?php
 include "../Vista/menu.php";
+require_once '../Modelo/M_usuario.php';
 if (empty($_SESSION['id'])) {
     //header("location:/registro_visitas");
     echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
@@ -37,18 +38,103 @@ if (empty($_SESSION['id'])) {
         }
         ?>
     </div>
-    <form action="../Controlador/C_agregar_area.php" method="POST">
+    <center><h3>MANTENIMIENTO USUARIOS</h3></center>
+    <form action="../Controlador/C_agregar_usuario.php" method="POST">
         <div>
             <div class="d-grid gap-2  mx-auto p-2" style="width:21%">
-                <input type="text" class="form-control fw-bold" name="jefe_area" id="jefe_area" placeholder="Jefe" required>
+                <input type="text" class="form-control " name="nombre_usuario" id="nombre_usuario" placeholder="Nombre"
+                    required>
             </div>
             <div class="d-grid gap-2  mx-auto p-2" style="width:21%">
-                <input type="text" class="form-control fw-bold" name="nombre_area" id="nombre_area" placeholder="Area" required>
+                <input type="text" class="form-control " name="apellido_usuario" id="apellido_usuario"
+                    placeholder="Apellidos" required>
+            </div>
+            <div class="d-grid gap-2  mx-auto p-2" style="width:21%">
+                <input type="text" class="form-control " name="usuario" id="usuario" placeholder="Usuario" required>
+            </div>
+            <div class="d-grid gap-2  mx-auto p-2" style="width:21%">
+                <input type="text" class="form-control " name="contra" id="contra" placeholder="Contraseña" required>
+            </div>
+            <div class="mx-auto p-2">
+                <select class="form-select mx-auto p-2" style="width:21%" name="nivel" id="nivel" required>
+                    <option selected value="" disabled>Seleccione nivel de acceso</option>
+                    <option value="2">Editor</option>
+                    <option value="3">Observador</option>
+                </select>
             </div>
         </div>
         <div class="d-grid gap-2 col-1 mx-auto">
             <button type="submit" class="btn btn-success btn-sm" name="btn_guardar" id="btn_guardar"
-                value="ok">Registrar Area</button>
+                value="ok">Registrar Usuario</button>
         </div>
     </form>
+    <div style="margin-left:250px;margin-right:50px;">
+        <table class="table table-striped table-hover table-sm" id="mitabla">
+            <thead class="table-dark">
+                <tr>
+                    <th hidden scope="col" style="width: fit-content;">
+                        <center>ID</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>N°</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>NOMBRE</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>APELLIDOS</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>USUARIO</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>ACCESO</center>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $consulta = new M_usuario();
+                $resultado = $consulta->traer_usuario();
+                $num = 1;
+                while ($datos = $resultado->fetch_object()) { ?>
+                    <tr>
+                        <td hidden style="width: fit-content">
+                            <center><?php echo $datos->id ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $num; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->nombre; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->apellidos; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->usuario; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center>
+                                <?php 
+                                if($datos->nivel == 2){
+                                    echo "Editor";
+                                }elseif($datos->nivel == 3){
+                                    echo "Observador";
+                                }
+                                ?>
+                            </center>
+                        </td>
+                        <td style="width: fit-content;">
+                            <center> <a href="editar.php?id=<?php echo $datos->id ?>" class="btn btn-small btn-warning"
+                                    title="Editar"><i class="fa-regular fa-pen-to-square"></i></a>
+                            </center>
+                        </td>
+                    </tr>
+                    <?php $num = $num + 1;
+                } ?>
+            </tbody>
+        </table>
+    </div>
 </body>

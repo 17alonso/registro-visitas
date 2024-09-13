@@ -62,5 +62,5 @@ var tabla = new DataTable('#mitabla', {
                 },
             ]
         }
-    }
+    },
 });

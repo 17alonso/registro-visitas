@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require_once '../Modelo/M_visitante.php';
 
 date_default_timezone_set('America/Lima');

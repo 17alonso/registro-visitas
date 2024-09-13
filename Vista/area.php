@@ -1,5 +1,6 @@
 <?php
 include "../Vista/menu.php";
+require_once '../Modelo/M_area.php';
 if (empty($_SESSION['id'])) {
     //header("location:/registro_visitas");
     echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas'>";
@@ -37,6 +38,7 @@ if (empty($_SESSION['id'])) {
         }
         ?>
     </div>
+    <center><h3>MANTENIMIENTO AREA</h3></center>
     <form action="../Controlador/C_agregar_area.php" method="POST">
         <div>
             <div class="d-grid gap-2  mx-auto p-2" style="width:21%">
@@ -51,4 +53,53 @@ if (empty($_SESSION['id'])) {
                 value="ok">Registrar Area</button>
         </div>
     </form>
+    <div style="margin-left:250px;margin-right:50px;">
+        <table class="table table-striped table-hover table-sm" id="mitabla">
+            <thead class="table-dark">
+                <tr>
+                    <th hidden scope="col" style="width: fit-content;">
+                        <center>ID</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>N°</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>JEFE</center>
+                    </th>
+                    <th scope="col" style="width: fit-content">
+                        <center>AREA</center>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $consulta = new M_area();
+                $resultado = $consulta->traer_area();
+                $num = 1;
+                while ($datos = $resultado->fetch_object()) { ?>
+                    <tr>
+                        <td hidden style="width: fit-content">
+                            <center><?php echo $datos->id ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $num; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->jefe; ?></center>
+                        </td>
+                        <td style="width: fit-content">
+                            <center><?php echo $datos->nombre; ?></center>
+                        </td>
+                        <td style="width: fit-content;">
+                            <center> <a href="editar.php?id=<?php echo $datos->id ?>" class="btn btn-small btn-warning"
+                                    title="Editar"><i class="fa-regular fa-pen-to-square"></i></a>
+                            </center>
+                        </td>
+                    </tr>
+                    <?php $num = $num + 1;
+                } ?>
+            </tbody>
+        </table>
+    </div>
 </body>

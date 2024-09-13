@@ -29,6 +29,7 @@ if (empty($_SESSION['id'])) {
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="../CSS/menu.css" rel="stylesheet">
+  <link rel="icon" href="../Img/logo_muni.png">
 </head>
 <?php
 date_default_timezone_set('America/Lima');
@@ -90,7 +91,11 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
                 style="margin-left:10px;">
                 Reportes</span> </a>
           </li>
-
+          <li>
+            <a href="pantalla.php"> <i class="fa-solid fa-file-lines" aria-hidden="true"></i> <span
+                style="margin-left:10px;">
+                Pantalla</span> </a>
+          </li>
 
           <div>
             <li>
@@ -98,7 +103,7 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
                 <a href="area.php"><i class="fa-duotone fa-solid fa-address-card"></i><span style="margin-left:10px;">
                     Registrar Area</span></a>
                     <a href="usuario.php"><i class="fa-solid fa-person-circle-plus"></i><span style="margin-left:10px;">
-                    Registrar Area</span></a>
+                    Registrar Usuario</span></a>
               <?php } ?>
             </li>
             
@@ -125,8 +130,8 @@ $fecha = $dias_semana[$numero_dia] . ', ' . $dia . ' de ' . $nombre_mes[$mes] . 
     </div>
 
     <b>
-      <div class="d-flex justify-content-between p-2" style="width: 610px;">
-        <div><h3><input class="border border-0 fw-bold bg-transparent" style="width: 450px;" value="<?php echo $fecha ?>"
+      <div class="d-flex justify-content-between p-2" style="width: 650px;">
+        <div><h3><input class="border border-0 fw-bold bg-transparent" style="width: 480px;" value="<?php echo $fecha ?>"
             disabled></input></h3>
         </div>
         <div>

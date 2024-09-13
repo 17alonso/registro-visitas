@@ -43,13 +43,18 @@ Imprimimos un mensaje. Podemos usar
 el salto de línea o llamar muchas
 veces a $printer->text()
  */
-$printer->setTextSize(3, 3);
+$printer->setTextSize(5,5);
 $printer->text($_GET["num"]);
 $printer->feed();
 $printer->setTextSize(1, 1);
+$printer->text("Nombre Completo:");
+$printer->setUnderline(Printer::UNDERLINE_SINGLE);
 $printer->text($_GET["nombre"]);
 $printer->feed();
+$printer->setUnderline(Printer::UNDERLINE_NONE);
 $printer->setTextSize(1, 1);
+$printer->text("Area u Oficina:");
+$printer->setUnderline(Printer::UNDERLINE_SINGLE);
 $printer->text($_GET["area"]);
 //$printer->feed();
 /*$printer->setJustification(Printer::JUSTIFY_LEFT);
@@ -84,4 +89,6 @@ la conexión con la impresora. Recuerda incluir esto al final de todos los archi
 $printer->close();
 
 //header("location:/registro_visitas/Vista/inicio.php");
-echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";	
+echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=/registro_visitas/Vista/inicio.php'>";
+//echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=https://probandovisitas.42web.io/registro_visitas/Vista/inicio.php'>";
+//echo "<META HTTP-EQUIV = REFRESH CONTENT='0;URL=https://muniollantaytambo.gob.pe/registro_visitas/Vista/inicio.php'>";			

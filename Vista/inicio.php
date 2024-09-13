@@ -21,6 +21,17 @@ if (empty($_SESSION['id'])) {
     }
 </script>
 
+<script>
+    function confirmar_atencion() {
+        if (confirm("¿Seguro que termino la Atención?")) {
+            localStorage.setItem('playSound', 'true');
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+
 <body>
 
     <!--Inicio mensaje Toast Sweet alert-->
@@ -36,9 +47,10 @@ if (empty($_SESSION['id'])) {
         ?>
     </div>
     <!--Fin mensaje Toast Sweet alert-->
-    
-    <div  style="margin-left:250px;margin-right:50px;" class="p-3">
-    <center><h3>INICIO</h3></center>
+    <center>
+        <h3>INICIO</h3>
+    </center>
+    <div style="margin-left:250px;margin-right:50px;" class="p-3">
         <table class="table table-striped table-hover table-sm" id="mitabla">
             <thead class="table-dark">
                 <tr>
@@ -113,26 +125,40 @@ if (empty($_SESSION['id'])) {
                         <td style="width: fit-content">
                             <center><?php echo $datos->hora; ?></center>
                         </td>
-                        <td style="width: fit-content;">
-                            <center> <a href="editar.php?id=<?php echo $datos->id ?>" class="btn btn-small btn-warning"
-                                    title="Editar"><i class="fa-regular fa-pen-to-square"></i></a>
-                            </center>
-                        </td>
-                        <?php if ($_SESSION['nivel'] == '1') { ?>
+                        <?php if ($_SESSION['nivel'] != '3') { ?>
                             <td style="width: fit-content;">
-                                <center><a onclick="return confirmar()"
-                                        href="../Controlador/C_eliminar_visitante.php?id=<?php echo $datos->id ?>"
-                                        class="btn btn-small btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></a>
+                                <center> <a href="editar.php?id=<?php echo $datos->id ?>" class="btn btn-small btn-warning"
+                                        title="Editar"><i class="fa-regular fa-pen-to-square"></i></a>
                                 </center>
                             </td>
                         <?php } else { ?>
+                            <td style="width: fit-content;">
+                                <center> <a onclick="return confirmar_atencion()" href="../Controlador/C_atendido.php?id=<?php echo $datos->id ?>"
+                                        class="btn btn-small btn-success" title="Atentido"><i
+                                            class="fa-duotone fa-solid fa-circle-check"></i></a>
+                                </center>
+                            </td>
+                        <?php }
+                        if ($_SESSION['nivel'] == '1') { ?>
+                            <td style="width: fit-content;">
+                                <center><a onclick="return confirmar()"
+                                        href="../Controlador/C_eliminar_visitante.php?id=<?php echo $datos->id ?>"
+                                        class="btn btn-small btn-danger" title="Eliminar" name="btneliminar" value="ok"><i
+                                            class="fa-solid fa-trash"></i></a>
+                                </center>
+                            </td>
+                        <?php } elseif ($_SESSION['nivel'] == '2') { ?>
                             <td style="width: fit-content;">
                                 <center><a
                                         href="impresion.php?num=<?php echo $num ?>&nombre=<?php echo $datos->nombre . " " . $datos->apellido; ?>&area=<?php echo $datos->area; ?>&fecha=<?php echo $datos->fecha; ?>&hora=<?php echo $datos->hora; ?>"
                                         class="btn btn-small btn-info" title="Imprimir"><i class="fa-solid fa-print"></i></a>
                                 </center>
                             </td>
+                        <?php } else { ?>
+                            <td style="width: fit-content;">
+                            </td>
                         <?php } ?>
+
                     </tr>
                     <?php $num = $num + 1;
                 } ?>

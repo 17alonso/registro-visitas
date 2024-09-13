@@ -90,7 +90,7 @@ if (empty($_SESSION['id'])) {
                 <div>
                     <?php
                     date_default_timezone_set('America/Lima');
-                    $fecha = date('d-m-Y');
+                    $fecha = date('Y-m-d');
                     ?>
                     <b><input type="hidden" name="fecha_visitante" id="fecha_visitante" class="border border-0 w-50"
                             type="datetime" value="<?php echo $fecha ?>"></b>

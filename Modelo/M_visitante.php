@@ -20,15 +20,15 @@ class M_visitante
 
     function traer_visitante(){
         date_default_timezone_set('America/Lima');
-        $fecha = date('d-m-Y');
-        $query="select * from visitante where fecha='$fecha' and estado='1'";
+        $fecha = date('Y-m-d');
+        $query="select * from visitante where fecha='$fecha' and estado='1' and atendido='0'";
         $conn = new conectar();
         $resultado = $conn->Ejecutar_Consulta($query);
         return $resultado;
     }
     
     function traer_visitante_reporte($fecha_ini,$fecha_fin){
-        $query="select * from visitante where fecha BETWEEN '$fecha_ini' AND '$fecha_fin' and estado='1' order by fecha asc";
+        $query="select * from visitante where fecha BETWEEN '$fecha_ini' and '$fecha_fin' and estado='1' and atendido='1' order by fecha asc";
         $conn = new conectar();
         $resultado = $conn->Ejecutar_Consulta($query);
         return $resultado;
@@ -52,8 +52,16 @@ class M_visitante
         return $resultado;
     }
 
-    function contar_visitante($fecha){
+    function contar_visitante(){
+        date_default_timezone_set('America/Lima');
+        $fecha = date('Y-m-d');
         $query="select count(*) as total from visitante where fecha='$fecha' and estado=1";
+        $conn=new conectar();
+        $resultado = $conn->Ejecutar_Consulta($query);
+        return $resultado;
+    }
+    function atender_visitante($id){
+        $query="update visitante set atendido='1' where id='$id'";
         $conn=new conectar();
         $resultado = $conn->Ejecutar_Consulta($query);
         return $resultado;
