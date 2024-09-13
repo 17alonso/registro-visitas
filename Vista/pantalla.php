@@ -28,6 +28,10 @@ if (empty($_SESSION['id'])) {
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="../CSS/pantalla.css" rel="stylesheet">
     <link rel="icon" href="../Img/logo_muni.png">
@@ -43,15 +47,34 @@ if (empty($_SESSION['id'])) {
 </script>
 
 <body>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyC21nuGkReKkL1A0QrKz_pZ1eOrR7j4W7Q",
+            authDomain: "registro-de-visitas-e4293.firebaseapp.com",
+            databaseURL: "https://registro-de-visitas-e4293-default-rtdb.firebaseio.com", // URL de tu base de datos
+            projectId: "registro-de-visitas-e4293",
+            storageBucket: "registro-de-visitas-e4293.appspot.com",
+            messagingSenderId: "771455874969",
+            appId: "1:771455874969:web:96cd07835adf82f02ec508",
+            measurementId: "G-GE6XX7CTV4"
+        };
+        // Inicializa Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        //console.log("Firebase inicializado:", firebase);
+    </script>
+
     <audio id="sound" src="../Img/sonido.mp3"></audio>
     <script>
-        function checkSound() {
-            if (localStorage.getItem('playSound') === 'true') {
+        firebase.database().ref('playSound').on('value', (snapshot) => {
+            //console.log("Valor recibido:", snapshot.val());
+            if (snapshot.val() === true) {
                 document.getElementById('sound').play();
-                localStorage.setItem('playSound', 'false');
+                firebase.database().ref('playSound').set(false);
             }
-        }
-        setInterval(checkSound, 100); // Verifica cada segundo
+        });
     </script>
     <div class="d-flex justify-content-between p-2">
         <label></label>

@@ -12,6 +12,8 @@ if (empty($_SESSION['id'])) {
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 
 <script>
@@ -22,12 +24,34 @@ if (empty($_SESSION['id'])) {
 </script>
 
 <script>
-    function confirmar_atencion() {
+    // Configuración de Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyC21nuGkReKkL1A0QrKz_pZ1eOrR7j4W7Q",
+        authDomain: "registro-de-visitas-e4293.firebaseapp.com",
+        databaseURL: "https://registro-de-visitas-e4293-default-rtdb.firebaseio.com", // URL de tu base de datos
+        projectId: "registro-de-visitas-e4293",
+        storageBucket: "registro-de-visitas-e4293.appspot.com",
+        messagingSenderId: "771455874969",
+        appId: "1:771455874969:web:96cd07835adf82f02ec508",
+        measurementId: "G-GE6XX7CTV4"
+    };
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    //console.log("Firebase inicializado:", firebase);
+</script>
+
+<script>
+    function confirmar_atencion(event) {
+        event.preventDefault(); // Evita la redirección inmediata
         if (confirm("¿Seguro que termino la Atención?")) {
-            localStorage.setItem('playSound', 'true');
-            return true;
-        }else{
-            return false;
+            firebase.database().ref('playSound').set(true)
+                .then(() => {
+                    //console.log("Valor establecido en la base de datos");
+                    const href = event.target.closest('a').href; // Obtiene el href del enlace más cercano
+                    window.location.href = href; // Redirige después de que la operación se complete
+                })
+                .catch((error) => console.error("Error al establecer el valor:", error));
         }
     }
 </script>
@@ -133,7 +157,8 @@ if (empty($_SESSION['id'])) {
                             </td>
                         <?php } else { ?>
                             <td style="width: fit-content;">
-                                <center> <a onclick="return confirmar_atencion()" href="../Controlador/C_atendido.php?id=<?php echo $datos->id ?>"
+                                <center> <a onclick="return confirmar_atencion(event)"
+                                        href="../Controlador/C_atendido.php?id=<?php echo $datos->id ?>"
                                         class="btn btn-small btn-success" title="Atentido"><i
                                             class="fa-duotone fa-solid fa-circle-check"></i></a>
                                 </center>
